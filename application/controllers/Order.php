@@ -21,7 +21,7 @@ class Order extends Application {
         
         $neworder = $this->orders->create();
         $neworder->num = $order_num;
-        $neworder->date = date();
+        $neworder->date = date('Y-M-d H:m:s');
         $neworder->status = 'a';
         $neworder->total = 0;
         $this->orders->add($neworder);
@@ -77,7 +77,7 @@ class Order extends Application {
 
     // add an item to an order
     function add($order_num, $item) {
-        //FIXME
+        $this->orders->add_item($order_num,$item);
         redirect('/order/display_menu/' . $order_num);
     }
 
