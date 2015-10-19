@@ -246,8 +246,9 @@ class MY_Model extends CI_Model implements Active_Record {
         $this->db->order_by($this->_keyField, 'asc');
         if (($what == 'period') && ($which < 9)) {
             $this->db->where($what, $which); // special treatment for period
-        } else
+        } else {
             $this->db->where($what, $which);
+        }
         $query = $this->db->get($this->_tableName);
         return $query->result();
     }
